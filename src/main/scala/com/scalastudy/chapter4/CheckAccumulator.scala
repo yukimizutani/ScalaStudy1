@@ -1,5 +1,9 @@
 package com.scalastudy.chapter4
 
+/**
+ * コンパニオンオブジェクト
+ */
+
 class CheckAccumulator {
   private var sum  = 0
   def add(b: Byte) { sum += b }
