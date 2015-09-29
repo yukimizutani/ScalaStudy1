@@ -12,14 +12,35 @@ class Rational(n: Int, d: Int) {
   require(d != 0)
   println("Created " + n + "/" + d)
 
-  val numer: Int = n
-  val denom: Int = d
+  private val g = gcb(n.abs, d.abs) //nとdの最大公約数
+
+  val numer: Int = n / g
+  val denom: Int = d / g
 
   def this(n: Int) = this(n,1)
 
-  override def toString =  n + "/" + d
+  override def toString =  numer + "/" + denom
 
+  /**
+   * 加算
+   * @param that 加算対象の分数クラス
+   * @return Rational 加算後の分数クラス
+   */
   def add(that:Rational):Rational = new Rational(numer * that.denom + that.numer * denom , denom * that.denom)
 
+  /**
+   * 自身のほうが小さいかの判定
+   * @param that 比較対象の分数クラス
+   * @return Boolean 自身が小さい場合はtrue
+   */
   def lessThan(that: Rational):Boolean = this.numer * that.denom < that.numer * this.denom
+
+  /**
+   * 最大公約数の計算
+   * @param a 数値
+   * @param b 数値
+   * @return Int a と b の最大公約数
+   */
+  private def gcb(a: Int, b: Int): Int = if (b == 0) a else gcb(b, a % b)
+
 }
