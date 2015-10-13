@@ -23,7 +23,7 @@ class RationalTest extends FunSuite {
   test("add で 分数の足し算の結果を返す"){
     val a = new Rational(1,2)
     val b = new Rational(1,3)
-    val result = a.add(b)
+    val result = a + b
     assert(result.toString === "5/6")
   }
 
@@ -36,6 +36,34 @@ class RationalTest extends FunSuite {
   test("補助コンストラクタで、分母未指定の場合は自動的に分母に1をセットする"){
     val a = new Rational(3)
     assert(a.denom === 1)
+  }
+
+  test("+ で足し算を実行する"){
+    val a = new Rational(1,2)
+    val b = new Rational(2,3)
+    val result = a + b
+    assert(result.toString === "7/6")
+  }
+
+  test("- で引き算を実行する"){
+    val a = new Rational(2,3)
+    val b = new Rational(1,3)
+    val result = a - b
+    assert(result.toString === "1/3")
+  }
+
+  test("* で掛け算を実行する"){
+    val a = new Rational(1,2)
+    val b = new Rational(2,3)
+    val result = a * b
+    assert(result.toString === "1/3")
+  }
+
+  test(" / で割り算を実行する") {
+    val a = new Rational(1,2)
+    val b = new Rational(2,3)
+    val result = a / b
+    assert(result.toString === "3/4")
   }
 
 }
