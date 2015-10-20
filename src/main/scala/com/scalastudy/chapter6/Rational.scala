@@ -35,7 +35,7 @@ class Rational(n: Int, d: Int) {
    * @return Rational 加算後の分数クラス
    */
   def + (i:Int): Rational = {
-    //this.+(new Rational(i))
+    //this.+(new Rational(i)
     new Rational(numer + i * denom, denom )
   }
 

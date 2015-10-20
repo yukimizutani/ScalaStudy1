@@ -66,4 +66,11 @@ class RationalTest extends FunSuite {
     assert(result.toString === "3/4")
   }
 
+  implicit def intToRational(x:Int):Rational = new Rational(x)
+
+  test("暗黙の方変換を実行する"){
+    val a = new Rational(1,2)
+    val result = 1 + a
+    assert(result.toString === "3/2" )
+  }
 }
