@@ -43,4 +43,57 @@ class FunctionsSample$Test extends FunSuite {
     assert(f2(1, 2).===(3))
   }
 
+  test("sum"){
+    assert(FunctionsSample.sum(1,2,3) == 6)
+
+    val a = FunctionsSample.sum _
+    assert(a(1,1,2) === 4)
+
+    val b = FunctionsSample.sum(1,_:Int,3)
+    assert(b(2) === 6 )
+  }
+
+
+  test("echo"){
+    FunctionsSample.echo("a","b","c")
+    FunctionsSample.echo("z")
+    val a = Array("a","b","c")
+    FunctionsSample.echo(a: _*)
+  }
+
+  test("speed"){
+    assert(FunctionsSample.speed(1F,2F) == 0.5F)
+    assert(FunctionsSample.speed(time = 2F, distance = 1F) == 0.5F)
+    assert(FunctionsSample.speed(time = 2F) === 0.25)
+  }
+
+  test("list method2"){
+    val list = List(1,2,3)
+    assert(list.map(_ + 1) === List(2,3,4))
+    assert(list.map((x:Int) => x + 1) === List(2,3,4))
+
+    val words = List("the","quick")
+    assert(words.map(_.length) === List(3,5))
+    assert(words.map(_.length).filter(_ > 4) == List(5))
+
+
+
+    assert(words.map(_.toList) === List(List('t','h','e'),List('q','u','i','c','k')))
+
+    assert(words.flatMap(_.toList) === List('t','h','e','q','u','i','c','k'))
+
+
+    val list2 = List(1,2,3,4,5)
+    assert(list2.filter( _ % 2 == 0) === List(2,4))
+    assert(list2.partition( _ % 2 == 0) === (List(2,4), List(1,3,5)) )
+
+    assert(list2.find( _ % 2 == 0) === Some(2))
+    //assert(list2.find( _ <  0) === None)
+    assert(list2.exists( _ <  0))
+
+
+
+
+  }
+
 }
