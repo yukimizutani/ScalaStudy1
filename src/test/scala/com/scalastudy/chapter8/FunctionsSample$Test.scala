@@ -10,7 +10,6 @@ class FunctionsSample$Test extends FunSuite {
     //FunctionsSample.processFile("D:\\scala\\20150819\\hello.scala",10)
   }
 
-
   test("function literals"){
     val increase = (x: Int) => x + 1
     assert(increase(1) == 2)
@@ -24,7 +23,6 @@ class FunctionsSample$Test extends FunSuite {
     assert(increase2(10) == 11)
   }
 
-
   test("list method"){
     val someNumbers = List(-11,-10,-5,0,5,10)
     someNumbers.foreach(println(_))
@@ -33,7 +31,6 @@ class FunctionsSample$Test extends FunSuite {
     assert(filteredNumbers.isInstanceOf[List[Int]])
 
   }
-
 
   test("place holder"){
     val f = (_:Int) + (_:Int)
@@ -90,10 +87,7 @@ class FunctionsSample$Test extends FunSuite {
     assert(list2.find( _ % 2 == 0) === Some(2))
     //assert(list2.find( _ <  0) === None)
     assert(list2.exists( _ <  0))
-
-
-
-
   }
+
 
 }

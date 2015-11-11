@@ -18,8 +18,6 @@ object FunctionsSample {
     }
   }
 
-
-
   def sum(a:Int,b:Int,c:Int) = a + b + c
 
 
@@ -29,6 +27,7 @@ object FunctionsSample {
 
   def speed(distance:Float = 0.5F, time:Float) : Float =
     distance / time
+
 
 
 }
