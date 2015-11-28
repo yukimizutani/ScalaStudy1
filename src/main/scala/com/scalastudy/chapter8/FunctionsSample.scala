@@ -18,6 +18,17 @@ object FunctionsSample {
     }
   }
 
+  def sum(a:Int,b:Int,c:Int) = a + b + c
+
+
+  def echo(args:String*) =
+    for (arg <- args) println(arg)
+
+
+  def speed(distance:Float = 0.5F, time:Float) : Float =
+    distance / time
+
+
 
 
   def returnFunc():Int => Int = {
