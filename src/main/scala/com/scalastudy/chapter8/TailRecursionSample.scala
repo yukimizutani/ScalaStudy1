@@ -13,20 +13,33 @@ object TailRecursionSample {
 
 
   def factorialMatch(n:Int) :Int =  n match {
-    case 0 => 1
-    case 1 => 1
+    //case 0 | 1  => 1
+    //case 0 => 1
+    //case 1 => 1
+    case 0 | 1 => 1
+    //case i if ( i == 0 | i == 1 ) => 1
     case _ => n * factorialMatch(n - 1)
   }
 
 
-  def isGoodEnough(guess:Double):Boolean = {
-    println("guess [" + guess + "]" )
-    Math.abs(guess * guess - 2.0) < 1.0E-6
+
+
+  def fibNoRecursion(n:Int) =  {
+    var a = 0
+    var b = 1
+    for(i <- 1 to n){
+      val next = a + b
+      a = b
+      b = next
+    }
+    a
   }
 
-  def improve(guess:Double):Double = (guess + 2.0/guess)/ 2.0
 
-
+  def fibRecursion(n:Int):Int = n match {
+    case 0 | 1 => n
+    case _ => fibRecursion(n - 1) + fibNoRecursion(n - 2)
+  }
 
 
 }

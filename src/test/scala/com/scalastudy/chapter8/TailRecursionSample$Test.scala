@@ -20,17 +20,24 @@ class TailRecursionSample$Test extends FunSuite {
     assert(factorialMatch(4) == 4 * 3 * 2 * 1)
   }
 
-
-  test("testIsGoodEnouth"){
-    assert(isGoodEnough(1.41421356237) == true)
-    assert(isGoodEnough(1.4142135) == true)
-    assert(isGoodEnough(1.414) == false)
+  test("testFibNoRecursion"){
+    assert(fibNoRecursion(0) == 0)
+    assert(fibNoRecursion(1) == 1)
+    assert(fibNoRecursion(2) == 1)
+    assert(fibNoRecursion(3) == 2)
+    assert(fibNoRecursion(4) == 3)
+    assert(fibNoRecursion(5) == 5)
+    fibNoRecursion(100000)
   }
 
-  test("testImprove"){
-    assert(improve(8.0) == 2.0)
-
-
+  test("testFibRecursion"){
+    assert(fibRecursion(0) == 0)
+    assert(fibRecursion(1) == 1)
+    assert(fibRecursion(2) == 1)
+    assert(fibRecursion(3) == 2)
+    assert(fibRecursion(4) == 3)
+    assert(fibRecursion(5) == 5)
+    fibRecursion(100000)
   }
 
 }
