@@ -21,6 +21,13 @@ object TailRecursionSample {
     case _ => n * factorialMatch(n - 1)
   }
 
+  def factorialMatchTailRecursion(n:Int) :Int =  {
+    def factorialMatch(n:Int, f:Int) :Int =  n match {
+      case 0 | 1 => f
+      case _ => factorialMatch(n - 1, n * f)
+    }
+    factorialMatch(n, 1)
+  }
 
 
 
@@ -41,5 +48,13 @@ object TailRecursionSample {
     case _ => fibRecursion(n - 1) + fibNoRecursion(n - 2)
   }
 
+
+  def fibTailRecursion(n:Int):Int = {
+    def fibTail(n:Int, a:Int, b:Int):Int = n match {
+      case 0 => a
+      case _ => fibTail(n-1, b, a+b)
+    }
+    fibTail(n,0,1)
+  }
 
 }
