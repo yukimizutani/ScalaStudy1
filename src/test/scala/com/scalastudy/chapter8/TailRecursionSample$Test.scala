@@ -18,6 +18,7 @@ class TailRecursionSample$Test extends FunSuite {
     assert(factorialMatch(1) == 1)
     assert(factorialMatch(3) == 3 * 2 * 1)
     assert(factorialMatch(4) == 4 * 3 * 2 * 1)
+    //factorialMatch(10000)
   }
 
 

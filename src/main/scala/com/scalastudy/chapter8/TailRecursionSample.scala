@@ -1,5 +1,7 @@
 package com.scalastudy.chapter8
 
+import scala.annotation.tailrec
+
 
 object TailRecursionSample {
 
@@ -27,6 +29,7 @@ object TailRecursionSample {
     else boom(x-1) + 1
 
 
+  @tailrec
   def bang(x:Int):Int =
     if(x == 0) throw new Exception("bang!")
     else bang(x-1)
