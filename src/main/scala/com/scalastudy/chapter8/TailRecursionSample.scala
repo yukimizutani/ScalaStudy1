@@ -21,6 +21,18 @@ object TailRecursionSample {
     case _ => n * factorialMatch(n - 1)
   }
 
+
+  def boom(x:Int):Int =
+    if(x == 0) throw new Exception("boom!")
+    else boom(x-1) + 1
+
+
+  def bang(x:Int):Int =
+    if(x == 0) throw new Exception("bang!")
+    else bang(x-1)
+
+
+
   def factorialMatchTailRecursion(n:Int) :Int =  {
     def factorialMatch(n:Int, m:Int) :Int =  n match {
       case 0 | 1 => m

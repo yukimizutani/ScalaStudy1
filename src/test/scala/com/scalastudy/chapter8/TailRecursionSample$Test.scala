@@ -20,6 +20,13 @@ class TailRecursionSample$Test extends FunSuite {
     assert(factorialMatch(4) == 4 * 3 * 2 * 1)
   }
 
+
+  test("testBoomBang"){
+    //bang(5)
+    //boom(5)
+
+  }
+
   test("testFactorialMatchTailRecursion"){
     //assert(factorialMatchTailRecursion(0) == 1)
     assert(factorialMatchTailRecursion(1) == 1)
