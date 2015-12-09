@@ -12,7 +12,7 @@ object TailRecursionSample {
   }
 
 
-  def factorialMatch(n:Int) :Int =  n match {
+  def factorialMatch(n:Int):Int =  n match {
     //case 0 | 1  => 1
     //case 0 => 1
     //case 1 => 1
@@ -22,13 +22,17 @@ object TailRecursionSample {
   }
 
   def factorialMatchTailRecursion(n:Int) :Int =  {
-    def factorialMatch(n:Int, f:Int) :Int =  n match {
-      case 0 | 1 => f
-      case _ => factorialMatch(n - 1, n * f)
+    def factorialMatch(n:Int, m:Int) :Int =  n match {
+      case 0 | 1 => m
+      case _ => factorialMatch(n - 1, n * m)
     }
     factorialMatch(n, 1)
   }
-
+  //factorialMatch(4,1)
+  // factorialMatch(3,4)
+  //  factorialMatch(2,12)
+  //   factorialMatch(1,24)
+  //    24
 
 
   def fibNoRecursion(n:Int) =  {
