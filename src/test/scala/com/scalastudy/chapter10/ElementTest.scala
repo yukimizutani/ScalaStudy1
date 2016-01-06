@@ -42,15 +42,26 @@ class ElementTest extends FunSuite {
     val ue = elem('*', 2, 3)
     //assert(ue.isInstanceOf[UniformElement])
     assert(ue.isInstanceOf[Element])
+  }
 
+  test("widen"){
+    val le = elem("abc")
+    assert(le.widen(5).toString == "*abc*")
+    assert(le.widen(7).toString == "**abc**")
+  }
+
+
+  test("heighten"){
+    val le = elem("abc")
+    print(le.heighten(3).toString)
   }
 
   test("Spiral"){
-    println("Spriral 6")
-    print(Spiral.spiral(6,0) + "\n")
-    println("**********************\n")
-    println("Spriral 11")
-    print(Spiral.spiral(11,0))
+//    println("Spriral 6")
+//    print(Spiral.spiral(6,0) + "\n")
+//    println("**********************\n")
+//    println("Spriral 11")
+//    print(Spiral.spiral(11,0))
   }
 
 }
