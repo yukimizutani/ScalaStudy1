@@ -46,6 +46,10 @@ class ElementTest extends FunSuite {
   }
 
   test("Spiral"){
+    println("Spriral 6")
+    print(Spiral.spiral(6,0) + "\n")
+    println("**********************\n")
+    println("Spriral 11")
     print(Spiral.spiral(11,0))
   }
 
