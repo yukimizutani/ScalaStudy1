@@ -1,67 +1,62 @@
 package com.scalastudy.chapter10
 
 import org.scalatest.FunSuite
-import com.scalastudy.chapter10.Element._
 
-
+/**
+ * Created by f-takahashi on 2016/01/13.
+ */
 class ElementTest extends FunSuite {
 
-  test("testArrayElement") {
-    val ae = elem(Array("hello","world"))
-    assert(ae.width == 5)
+  test("element"){
+    val a = new ArrayElement(Array("hello","world"))
+    assert(a.height == 2)
+    assert(a.width == 5)
+    assert(a.contents.length == 2)
 
-    val e:Element = elem(Array("hello"))
-    assert(e.width == 5)
+    val b = new ArrayElement(Array("A","B"))
+    assert(a.above(b).height == 4)
+    assert(a.above(b).contents.length == 4)
+
+    val c = new ArrayElement(Array("C","D"))
+    assert(b.beside(c).contents(0) == "AC")
+    assert(b.beside(c).contents(1) == "BD")
   }
 
-  test("testLineElement") {
-    val le = elem("abc")
-    assert(le.toString == "abc")
+  test("LineElement"){
+    val a = new LineElement("abcdef")
+    assert(a.height == 1)
+    assert(a.width === 6)
+
+    val b = new LineElement("ghijkl")
+    assert(a.above(b).height == 2)
+    assert(a.above(b).width == 6)
+  }
+
+  test("UniformElement"){
+    val a = new UniformElement('a',1,1)
+    assert(a.contents === Array("a"))
+
+    val b = new UniformElement('b',5,1)
+    assert(b.contents === Array("bbbbb"))
   }
 
   test("zip"){
-    val a = Array(1,2,3) zip Array("a","b","c")
-    assert(a === Array((1,"a"), (2,"b"), (3,"c")))
+    val a = Array("A","B","C")
+    val b = Array("X","Y","Z")
 
-    val b = Array(1,2,3) zip Array("a","b")
-    assert(b === Array((1,"a"), (2,"b")))
+    val c = a zip b
 
-    val c = Array.fill(2)("*")
-    assert(c === Array("*","*"))
+    print(c(0))
+    print(c(1))
+    print(c(2))
   }
 
-  test("companion object Element"){
-    val ae = elem(Array("a","b","c"))
-    //assert(ae.isInstanceOf[ArrayElement])
-    assert(ae.isInstanceOf[Element])
 
-    val le = elem("line")
-    //assert(le.isInstanceOf[LineElement])
-    assert(le.isInstanceOf[Element])
 
-    val ue = elem('*', 2, 3)
-    //assert(ue.isInstanceOf[UniformElement])
-    assert(ue.isInstanceOf[Element])
-  }
 
-//  test("widen"){
-//    val le = elem("abc")
-//    assert(le.widen(5).toString == "*abc*")
-//    assert(le.widen(7).toString == "**abc**")
-//  }
-//
-//
-//  test("heighten"){
-//    val le = elem(Array("abc","def","ghi"))
-//    print(le.heighten(5).toString)
-//  }
 
-  test("Spiral"){
-    println("Spriral 6")
-    print(Spiral.spiral(6,0) + "\n")
-    println("@@@@@@@@@@@@@@@@@@@@@@")
-    println("Spriral 11")
-    print(Spiral.spiral(11,0))
-  }
+
+
+
 
 }
