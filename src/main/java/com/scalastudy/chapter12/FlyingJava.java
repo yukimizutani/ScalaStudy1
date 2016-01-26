@@ -1,0 +1,4 @@
+package com.scalastudy.chapter12;
+
+public class FlyingJava implements FlyingBehavior{
+}

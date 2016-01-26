@@ -1,4 +1,4 @@
-package com.sclastudy.chapter11;
+package com.scalastudy.chapter11;
 
 import org.junit.Test;
 
@@ -23,9 +23,9 @@ public class JavaClassHierarchyTest {
     public void testIsEqual() {
     //    assertThat(isEqual(128, 128), is(true));
         String x = "abcd".substring(0,2);
-        String y = "abce".substring(0,2);
-        System.out.println(x);
-        System.out.println(y);
+        String y = "abcd".substring(0,2);
+        //System.out.println(x);
+        //System.out.println(y);
         assertThat(isEqual(x,y),is(true));
     }
 

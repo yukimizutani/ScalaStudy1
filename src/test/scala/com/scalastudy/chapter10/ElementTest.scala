@@ -2,9 +2,6 @@ package com.scalastudy.chapter10
 
 import org.scalatest.FunSuite
 
-/**
- * Created by f-takahashi on 2016/01/13.
- */
 class ElementTest extends FunSuite {
 
   test("element"){
