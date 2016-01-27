@@ -1,4 +1,4 @@
 package com.scalastudy.chapter12;
 
-public class SwimmingJava implements Swimming {
+public class SwimmingJava implements SwimmingBehavior {
 }

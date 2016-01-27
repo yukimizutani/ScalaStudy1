@@ -7,7 +7,7 @@ package com.scalastudy.chapter6
  *  @param d 分母
  *　
  */
-class Rational(n: Int, d: Int) {
+class Rational(n: Int, d: Int) extends Ordered[Rational]{
 
   require(d != 0)
   println("Created " + n + "/" + d)
@@ -82,4 +82,5 @@ class Rational(n: Int, d: Int) {
    */
   private def gcb(a: Int, b: Int): Int = if (b == 0) a else gcb(b, a % b)
 
+  override def compare(that: Rational): Int = (this.numer * that.denom) - (that.numer * this.denom)
 }
