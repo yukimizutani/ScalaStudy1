@@ -73,4 +73,16 @@ class RationalTest extends FunSuite {
     val result = 1 + a
     assert(result.toString === "3/2" )
   }
+
+  test("compare"){
+
+    val a = new Rational(1,2)
+    val b = new Rational(1,3)
+    val c = new Rational(2,4)
+
+    assert((a > b ) === true)
+    assert((a > c) === false )
+
+  }
+
 }

@@ -4,25 +4,27 @@ import org.scalatest.FunSuite
 
 class BirdTest extends FunSuite {
 
-  test("testBird") {
-    val pi = new Pigeon
-    println(pi.name)
-    pi.fly()
-    pi.swim()
+  test("testBird"){
 
-    println("*********")
+    val pe = new Pegeon with Flying
+    pe.fly()
+    pe.swim()
 
-    val h = new Hawk with Flying
-    println(h.name)
+    println("************************")
+
+    val h = new Hawk
     h.fly()
     h.swim()
 
-    println("*********")
+    println("************************")
 
-    val pe = new Penguin
-    println(pe.name)
-    pe.swim()
+    val f = new FrigateBird
+    f.fly()
 
+    println("************************")
+
+    val peg = new Penguin
+    peg.swim()
   }
 
 }

@@ -39,7 +39,7 @@ object BuiltinControlStructure {
     } catch {
       case ex: FileNotFoundException => 0
       case ex: RuntimeException => 1
-      case _ => 10
+      case _:Exception => 10
     }
   }
     def matchFormula(s:String) = {

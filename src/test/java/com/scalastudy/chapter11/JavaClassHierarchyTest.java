@@ -21,7 +21,7 @@ public class JavaClassHierarchyTest {
 
     @Test
     public void testIsEqual() {
-    //    assertThat(isEqual(128, 128), is(true));
+       assertThat(isEqual(128, 128), is(true));
         String x = "abcd".substring(0,2);
         String y = "abcd".substring(0,2);
         //System.out.println(x);
@@ -31,6 +31,7 @@ public class JavaClassHierarchyTest {
 
     public boolean isEqual(Integer x, Integer y) {
         return Objects.equals(x, y);
+        //return x == y;
     }
 
     public boolean isEqual(String x, String y){
