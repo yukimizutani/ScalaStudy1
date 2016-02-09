@@ -38,4 +38,21 @@ object MatchSample {
     case _ => false
   }
 
+  def generalSize(x:Any) = x match {
+    case s:String => s.length
+    case m:Map[_, _] => m.size
+    case _ => -1
+  }
+
+
+  val SCALAREGEX = """^.*/(.*)/(.*scala)$""".r
+  val JAVAREGEX = """^.*/(.*)/(.*java)$""".r
+  val CLASSREGEX = """^.*/(.*)/(.*class)$""".r
+
+  def regexMatch(x:String): Option[(String, String)] = x match {
+    case SCALAREGEX(parentDir, scalaFile) => Some(parentDir, scalaFile)
+    case JAVAREGEX(parentDir, javaFile) => Some(parentDir, javaFile)
+    case _ => None
+  }
+
 }

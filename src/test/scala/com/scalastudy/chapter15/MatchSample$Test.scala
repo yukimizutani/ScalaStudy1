@@ -1,5 +1,8 @@
 package com.scalastudy.chapter15
 
+import java.io.File
+import java.nio.file.Files
+
 import org.scalatest.FunSuite
 import com.scalastudy.chapter15.MatchSample._
 
@@ -53,6 +56,23 @@ class MatchSample$Test extends FunSuite {
     val a = Map( 1 -> "a")
     assert(erasure(a) === 1)
   }
+
+  test("regex matching"){
+    def recursive(fileList:List[File]):List[String] = fileList match {
+      case h :: tail => {
+        if (h.isDirectory) recursive(h.listFiles().toList) ::: recursive(tail)
+        else h.getAbsolutePath :: recursive(tail)
+      }
+      case _ => Nil
+    }
+    val a = new File(".").listFiles().toList
+    val fileList = recursive(a)
+    for(f <- fileList) {
+      regexMatch(f)
+    }
+
+  }
+
 
 
 }
