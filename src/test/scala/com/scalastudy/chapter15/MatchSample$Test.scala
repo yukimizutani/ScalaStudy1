@@ -70,9 +70,15 @@ class MatchSample$Test extends FunSuite {
     for(f <- fileList) {
       regexMatch(f)
     }
-
   }
 
+  test("option"){
+    val m = Map('A' -> 10, 'B' -> 11)
+    assert(m.get('A') === Some(10))
+    assert(m.get('C') === None)
+    assert(m.get('C') === null)
+
+  }
 
 
 }
