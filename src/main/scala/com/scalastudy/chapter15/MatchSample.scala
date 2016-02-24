@@ -45,15 +45,29 @@ object MatchSample {
   }
 
 
-  val SCALAREGEX = """^.*/(.*)/(.*scala)$""".r
-  val JAVAREGEX = """^.*/(.*)/(.*java)$""".r
-  val CLASSREGEX = """^.*/(.*)/(.*class)$""".r
+  val SCALAREGEX= """.*\\(.*scala)$""".r
+  val JAVAREGEX = """.*\\(.*java)$""".r
+  val CLASSREGEX = """".*\\(.*class)$""".r
 
-  def regexMatch(x:String): Option[(String, String)] = x match {
-    case SCALAREGEX(parentDir, scalaFile) => Some(parentDir, scalaFile)
-    case JAVAREGEX(parentDir, javaFile) => Some(parentDir, javaFile)
-    case _ => None
+
+  def regexMatch(x:String) = x match {
+    case SCALAREGEX(a:String) => "******************"
+    case JAVAREGEX(a:String) => a
+    case CLASSREGEX(a:String, b:String) => "class"
+    case _ => ""
   }
+
+
+
+//  val SCALAREGEX = """^.*/(.*)/(.*scala)$""".r
+//  val JAVAREGEX = """^.*/(.*)/(.*java)$""".r
+//  val CLASSREGEX = """^.*/(.*)/(.*class)$""".r
+//
+//  def regexMatch(x:String): Option[(String, String)] = x match {
+//    case SCALAREGEX(parentDir, scalaFile) => Some(parentDir, scalaFile)
+//    case JAVAREGEX(parentDir, javaFile) => Some(parentDir, javaFile)
+//    case _ => None
+//  }
 
 
 }

@@ -58,27 +58,41 @@ class MatchSample$Test extends FunSuite {
   }
 
   test("regex matching"){
-    def recursive(fileList:List[File]):List[String] = fileList match {
+    val l = new File(".").listFiles().toList
+    def resursiveFileList(fileList:List[File]):List[String] = fileList match {
       case h :: tail => {
-        if (h.isDirectory) recursive(h.listFiles().toList) ::: recursive(tail)
-        else h.getAbsolutePath :: recursive(tail)
+        if (h.isDirectory) resursiveFileList(h.listFiles().toList) ::: resursiveFileList(tail)
+        else h.getAbsolutePath  :: resursiveFileList(tail)
       }
       case _ => Nil
     }
-    val a = new File(".").listFiles().toList
-    val fileList = recursive(a)
-    for(f <- fileList) {
-      regexMatch(f)
-    }
-  }
-
-  test("option"){
-    val m = Map('A' -> 10, 'B' -> 11)
-    assert(m.get('A') === Some(10))
-    assert(m.get('C') === None)
-    assert(m.get('C') === null)
+    val a = resursiveFileList(l)
+    a.foreach(((x:String) => println(regexMatch(x))))
 
   }
+
+//  test("regex matching"){
+//    def recursive(fileList:List[File]):List[String] = fileList match {
+//      case h :: tail => {
+//        if (h.isDirectory) recursive(h.listFiles().toList) ::: recursive(tail)
+//        else h.getAbsolutePath :: recursive(tail)
+//      }
+//      case _ => Nil
+//    }
+//    val a = new File(".").listFiles().toList
+//    val fileList = recursive(a)
+//    for(f <- fileList) {
+//      regexMatch(f)
+//    }
+//  }
+
+//  test("option"){
+//    val m = Map('A' -> 10, 'B' -> 11)
+//    assert(m.get('A') === Some(10))
+//    assert(m.get('C') === None)
+//    assert(m.get('C') === null)
+//
+//  }
 
 
 }
