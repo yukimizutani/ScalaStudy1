@@ -1,7 +1,6 @@
 package com.scalastudy.chapter15
 
 import org.scalatest.FunSuite
-import com.scalastudy.chapter15.Opt._
 
 
 class TestOption extends FunSuite{
@@ -26,20 +25,44 @@ class TestOption extends FunSuite{
     assert(d === "abc***")
   }
 
-  test("testoption"){
+  test("toInt"){
+    assert(Opt.toInt("1") === Some(1))
+    assert(Opt.toInt("abc") === None)
 
-    def sum(xs:List[Int]):Int = (0 /: xs)(_ + _)
-    def product(xs: List[Int]):Int = (1 /: xs)(_ * _)
-
-    assert(sum(List(1,2,3)) === 0 + 1 + 2 + 3)
-    assert(product(List(1,2,3)) === 1 * 2 * 3)
-
-    assert(toInt("1") === Some(1))
-    assert(toInt("a") === None)
-
-    assert(readText("not_exists.txt") === None)
-
+    assert(Opt.toInt("10").map( _ * 3) === Some(30))
+    assert(Opt.toInt("abc").map( _ * 3) === None)
   }
+
+  test("default value"){
+    val a = Opt.toInt("abc")
+    val b = a match {
+      case Some(s) => s
+      case None => 0
+    }
+    assert(b === 0)
+
+    val c = a.getOrElse(0)
+    assert(c === 0)
+
+    val d = a.fold(0)(_ * 1)
+    assert(d === 0)
+  }
+
+
+  test("option in option"){
+    val v1:Option[Int] = Some(3)
+    val v2:Option[Int] = Some(5)
+    val v3:Option[Int] = None
+
+    assert(v1.map(l1 => v2.map(l2 => l1 * l2)) === Some(Some(15)))
+    assert(v1.map(l1 => v2.map(l2 => l1 * l2)).flatten === Some(15))
+
+    assert(v1.flatMap(l1 => v2.map(l2 => l1 * l2)) === Some(15))
+    assert(v1.flatMap(l1 => v3.map(l2 => l1 * l2)) === None)
+  }
+
+
+
 
 
 }
