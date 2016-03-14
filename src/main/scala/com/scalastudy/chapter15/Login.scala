@@ -18,7 +18,7 @@ object LoginService {
 
   )
 
-  def login(name:String, passwword:String):Either[LoginError, User] =
+  def login(name:String, password:String):Either[LoginError, User] =
     userDatabase.get(name) match {
       case Some(u) => Right(u)
       case None => Left(UserNotFound)
