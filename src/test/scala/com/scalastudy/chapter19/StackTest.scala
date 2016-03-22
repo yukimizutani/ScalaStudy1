@@ -6,10 +6,9 @@ class StackTest extends FunSuite {
 
   test("NonEmptyStack"){
     val a = new NonEmptyStack[String]("First", Stack.apply())
-    a.push("Second")
-
-    assert(a.pop === ("Second", Stack.apply()))
-    assert(a.pop === ("First", Stack.apply()))
+    val b = a.push("Second")
+    val c = b.push("Third")
+    (c.pop._2 === ("Second", a) )
 
   }
 

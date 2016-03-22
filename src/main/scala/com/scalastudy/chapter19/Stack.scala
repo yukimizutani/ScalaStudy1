@@ -8,7 +8,7 @@ trait Stack[+T]{
 
 class NonEmptyStack[+T](private val top: T, private val rest:Stack[T]) extends Stack[T]{
   override def pop: (T, Stack[T]) = (top, rest)
-  override def push[E >: T](e: E): Stack[E] = new NonEmptyStack[E](e, new NonEmptyStack[E](this.top, this.rest))
+  override def push[E >: T](e: E):Stack[E]= new NonEmptyStack[E](e, this)
   override def isEmpty: Boolean = false
 }
 
