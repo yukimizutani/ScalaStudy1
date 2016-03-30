@@ -14,7 +14,7 @@ class SlowHeadQueue[T](smele:List[T]){
 }
 
 
-trait Queue[T]{
+trait Queue[+T]{
   def head:T
   def tail: Queue[T]
   def enqueue[U >: T](x:U) : Queue[U]
