@@ -4,33 +4,38 @@ import org.scalatest.FunSuite
 
 class QueueTest extends FunSuite {
 
-  test("test queue "){
-    var a = new Queue[Int](List(),List())
-    val t0 = System.nanoTime()
-    for(i <- 0 to 1000)
-      a = a.enqueue(i)
-    val t1 = System.nanoTime()
-    println("slow append queue: enqueue time: " + (t1 - t0)/Math.pow(10,6) + "ms")
-
-    val t2 = System.nanoTime()
-    a.head
-    val t3 = System.nanoTime()
-    println("slow append queue: head time: " + (t3 - t2)/Math.pow(10,6) + "ms")
-    println("*****************")
+  test("SlowAppendQueue") {
+    var a = new SlowAppendQueue[Int](List(1, 2, 3))
+    a = a.enqueue(4)
+    val second = a.tail
+    val third = second.tail
+    val fourth = third.tail
+    assert(a.head === 1)
+    assert(second.head === 2)
+    assert(third.head === 3)
+    assert(fourth.head === 4)
   }
 
-  test("slow head queue"){
-    var a = new Queue[Int](List(), List())
-    val t0 = System.nanoTime()
-    for(i <- 0 to 1000)
-      a = a.enqueue(i)
-    val t1 = System.nanoTime()
-    println("slow head queue enqueue time: " + (t1 - t0)/Math.pow(10,6) + "ms")
+  test("SlowHeadQueue") {
+    var a = new SlowHeadQueue[Int](List(1, 2, 3))
+    a = a.enqueue(4)
+    val second = a.tail
+    val third = second.tail
+    val fourth = third.tail
+    assert(a.head === 3)
+    assert(second.head === 2)
+    assert(third.head === 1)
+    assert(fourth.head === 4)
+  }
 
-    val t2 = System.nanoTime()
-    a.head
-    val t3 = System.nanoTime()
-    println("slow head queue head time: " + (t3 - t2)/Math.pow(10,6) + "ms")
+  test("Queue") {
+    var a:Queue[Int] = Queue(1,2,3)
+    a = a.enqueue(4)
+    assert(a.head === 1)
+
+    val b = Queue(new Apple)
+    b.enqueue(new Orange)
+
   }
 
 }
