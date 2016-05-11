@@ -2,10 +2,12 @@ package com.scalastudy.chapter19
 
 import org.scalatest.FunSuite
 
+import scala.collection.immutable.LinearSeq
+
 class CellTest extends FunSuite {
 
   test("Cell"){
-    val a = new Cell[String]("A")
+    val a:Cell[String] = new Cell[String]("A")
     a.put("B")
     assert(a.get() === "B")
 
@@ -15,7 +17,7 @@ class CellTest extends FunSuite {
   }
 
   test("Pair"){
-    val a:Pair[Int,Int] = new Pair[Int,Int](1, 100)
+    val a:Pair[Any,Int] = new Pair[Int,Int](1, 100)
     println(a.toString)
 
     val b = new Pair[String, String]("A", "B")
@@ -27,6 +29,9 @@ class CellTest extends FunSuite {
 
     var d:Pair[Any, Any] = new Pair(1,2)
     d = a
+
+    val g:List[Int] = List(1,2,3)
+
 
   }
 

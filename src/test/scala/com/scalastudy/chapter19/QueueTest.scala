@@ -4,6 +4,10 @@ import org.scalatest.FunSuite
 
 class QueueTest extends FunSuite {
 
+  test("AAA"){
+
+  }
+
   test("SlowAppendQueue"){
     var a = new SlowAppendQueue[Int](Nil)
     a = a.enqueue(1)
@@ -44,5 +48,15 @@ class QueueTest extends FunSuite {
 
   }
 
+
+  test("Queue2"){
+    val a= Queue[Int](0)
+    a.enqueue("S")
+
+    a.toString
+
+
+
+  }
 
 }
