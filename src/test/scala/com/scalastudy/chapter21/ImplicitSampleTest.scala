@@ -1,35 +1,28 @@
 package com.scalastudy.chapter21
 
 import org.scalatest.FunSuite
-import com.scalastudy.chapter21.ImplicitSample._
-
+import com.scalastudy.chapter21.StringObj.enrichString
 
 class ImplicitSampleTest extends FunSuite{
 
-  test("implicit conversion"){
+  implicit def intToBoolean(arg:Int) :Boolean = arg != 0
 
-    val a:Int = 1
-    val b:Boolean = 1
-    val c:String = 1
-
-    val d:Map[Int, String] = Map(1 -> "A")
-
-    val e = -1
-    e.abs
-
-    if(1){
-      println("passed!")
+  test("implicit conversion") {
+    if(1) {
+      println("AAA")
     }
+  }
 
+  test("enrichString"){
     println("Hi".smile)
   }
 
-  test("tap test"){
-    "Hi".tap(println)
-    val a = List(-1,0,1,2,3,4,5).tap(s => println("Before filter : " + s))
-      .filter(_ > 1).tap(s => println("After filter1 :" + s))
-      .filter( _ % 2 == 0).tap(s => println("After filter2 :" + s))
-      .sum
+  test("scala standard"){
+    val a:Int = -10
+    a.abs
+
+    val b = Map(1 -> "A", 2 -> "B")
+
   }
 
 }
