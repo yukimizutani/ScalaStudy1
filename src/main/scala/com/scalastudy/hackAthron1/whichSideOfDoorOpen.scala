@@ -10,54 +10,20 @@ class whichSideOfDoorOpen(station: String, way: String) {
   val rightDoorOpen = Array("大塚", "巣鴨", "駒込")
 
   if (way == "外回り") {
-    if (leftDoorOpen.contains(station)) {
-      println(s"${way}では、${station}は左側のドアが開きます。")
-    } else if (rightDoorOpen.contains(station)) {
-      println(s"${way}では、${station}は右側のドアが開きます。")
-    } else {
-      println("その駅は存在しません。")
-    }
+    openDoor(leftDoorOpen,rightDoorOpen)
   } else if (way == "内回り") {
-    if (rightDoorOpen.contains(station)) {
-      println(s"${way}では、${station}は左側のドアが開きます。")
-    } else if (leftDoorOpen.contains(station)) {
-      println(s"${way}では、${station}は右側のドアが開きます。")
-    } else {
-      println("その駅は存在しません。")
-    }
+    openDoor(rightDoorOpen,leftDoorOpen)
   } else {
     println("外回りか内回りか指定してください。")
   }
 
-  //  var i = 0
-  //
-  //  if(way=="外回り") {
-  //    if (side == "左側") {
-  //      println("外回りで左側のドアが開くのは：")
-  //      while (i < leftDoorOpen.length) {
-  //        println(leftDoorOpen(i))
-  //        i += 1
-  //      }
-  //    } else {
-  //      println("外回りで右側のドアが開くのは：")
-  //      while (i < rightDoorOpen.length) {
-  //        println(rightDoorOpen(i))
-  //        i += 1
-  //      }
-  //    }
-  //  }else{
-  //    if (side == "左側") {
-  //      println("内回りで左側のドアが開くのは：")
-  //      while (i < rightDoorOpen.length) {
-  //        println(rightDoorOpen(i))
-  //        i += 1
-  //      }
-  //    } else {
-  //      println("内回りで右側のドアが開くのは：")
-  //      while (i < leftDoorOpen.length) {
-  //        println(leftDoorOpen(i))
-  //        i += 1
-  //      }
-  //    }
-  //  }
+  def openDoor(leftSide:Array[String], rightSide:Array[String]){
+    if (leftSide.contains(station)) {
+      println(s"${way}では、${station}は左側のドアが開きます。")
+    } else if (rightSide.contains(station)) {
+      println(s"${way}では、${station}は右側のドアが開きます。")
+    } else {
+      println("その駅は存在しません。")
+    }
+  }
 }
