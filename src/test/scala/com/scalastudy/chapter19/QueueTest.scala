@@ -39,12 +39,12 @@ class QueueTest extends FunSuite {
     assert(a.tail.tail.head === 10)
     assert(a.tail.tail.tail.head === 100)
 
-//    a = a.enqueue(1)
-//    a = a.enqueue(10)
-//    a = a.enqueue(100)
-//    assert(a.head === 1)
-//    assert(a.tail.head === 10)
-//    assert(a.tail.tail.head === 100)
+    a = a.enqueue(1)
+    a = a.enqueue(10)
+    a = a.enqueue(100)
+    assert(a.head === 1)
+    assert(a.tail.head === 10)
+    assert(a.tail.tail.head === 100)
 
   }
 

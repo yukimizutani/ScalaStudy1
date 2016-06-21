@@ -31,8 +31,4 @@ class BTree$Test extends FunSuite {
 
 
   }
-
-  test("testMin") {
-
-  }
 }
